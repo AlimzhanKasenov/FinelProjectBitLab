@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/bootstrap.css'}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:decorate="layout/LayoutPage">
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="Ошибка загрузки">
+        <div class="card-body">
+            <h5 class="card-title">Заголовок карточки</h5>
+            <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
+            <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+        </div>
+    </div>
+</div>
+<script rel="stylesheet" type="application/javascript" th:src="@{'/js/bootstrap.js'}"></script>
+</body>
+</html>
