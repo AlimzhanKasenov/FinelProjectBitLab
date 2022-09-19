@@ -1,7 +1,7 @@
 INSERT INTO t_users(email, password, fullName, role)
 VALUES
-    ('alim_kasenov@bk.ru', '123', 'Alimzhan', 2),
-    ('sholpan@bk.ru', '123', 'Sholpan', 1);
+    ('alim_kasenov@bk.ru', '$2a$12$rWZULBN8zMUzxC43WHv0SuBOPR2pR4zxtwNUTEzEB6lQ95XU..vGC', 'Alimzhan', 2),
+    ('sholpan@bk.ru', '$2a$12$7xbpp7YkRnT2nDxYWLnPQuaIhkQkW7736BCGRYTMV65G1oN.pVute', 'Sholpan', DEFAULT);
 
 INSERT INTO t_items(nameItem, description, price, picture)
 VALUES

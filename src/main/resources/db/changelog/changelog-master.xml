@@ -14,11 +14,21 @@
                  stripComments="true"/>
     </changeSet>
 
-    <changeSet author="Alimzhan" id="0.0.1_insert_init_data">
+    <changeSet author="Alimzhan" id="0.0.2_insert_init_data">
         <sqlFile dbms="postgresql"
                  encoding="utf8"
                  endDelimiter=";"
-                 path="changes/0.0.1_insert_init_data.sql"
+                 path="changes/0.0.2_insert_init_data.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+
+    <changeSet author="Alimzhan" id="0.0.3_add_column_user">
+        <sqlFile dbms="postgresql"
+                 encoding="utf8"
+                 endDelimiter=";"
+                 path="changes/0.0.3_add_column_user.sql"
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"/>

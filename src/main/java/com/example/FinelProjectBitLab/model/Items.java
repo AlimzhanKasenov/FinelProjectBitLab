@@ -27,4 +27,7 @@ public class Items {
 
     @Column(name = "picture")
     private String picture;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User author;
 }
