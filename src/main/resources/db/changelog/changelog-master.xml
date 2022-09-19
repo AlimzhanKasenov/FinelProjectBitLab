@@ -5,7 +5,7 @@
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
     <changeSet author="Alimzhan" id="0.0.1_create_tables">
-        <sqlFile dbms="mysql"
+        <sqlFile dbms="postgresql"
                  encoding="utf8"
                  endDelimiter=";"
                  path="changes/0.0.1_create_tables.sql"
@@ -13,3 +13,14 @@
                  splitStatements="true"
                  stripComments="true"/>
     </changeSet>
+
+    <changeSet author="Alimzhan" id="0.0.1_insert_init_data">
+        <sqlFile dbms="postgresql"
+                 encoding="utf8"
+                 endDelimiter=";"
+                 path="changes/0.0.1_insert_init_data.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+</databaseChangeLog>
