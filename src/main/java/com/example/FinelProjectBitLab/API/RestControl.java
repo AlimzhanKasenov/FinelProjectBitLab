@@ -18,7 +18,7 @@ public class RestControl {
     private final UserServic userServic;
     private final ItemService itemService;
 
-    @GetMapping(value = "/items")
+    @GetMapping
     public ResponseEntity<List<Items>> getAllItems(){
         List<Items> items = itemService.getAllItems();
         return new ResponseEntity<> (items, HttpStatus.OK);
@@ -32,5 +32,20 @@ public class RestControl {
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PostMapping(value = "/addItem")
+    public Items addItem(@RequestBody Items item){
+        return itemService.addItem(item);
+    }
+
+    @PutMapping(value = "/update")
+    public Items updateItem(@RequestBody Items item){
+        return itemService.updateItem(item);
+    }
+
+    @DeleteMapping("/delet")
+    public void deletItem(@PathVariable(value = "id")Long id){
+        itemService.deletItem(id);
     }
 }

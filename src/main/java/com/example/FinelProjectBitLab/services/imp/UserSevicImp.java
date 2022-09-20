@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserSevicImp implements UserDetailsService {
+public class UserSevicImp implements UserDetailsService{
     private final UserRepos userRepos;
 
     @Override

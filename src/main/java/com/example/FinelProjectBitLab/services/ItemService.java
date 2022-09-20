@@ -8,4 +8,7 @@ import java.util.List;
 public interface ItemService {
     List<Items> getAllItems();
     Items getItemById(Long id);
+    Items addItem(Items item);
+    Items updateItem(Items items);
+    void deletItem(Long id);
 }
