@@ -1,5 +1,6 @@
-package com.example.FinelProjectBitLab.API;
+package com.example.FinelProjectBitLab.controller;
 
+import com.example.FinelProjectBitLab.API.RestControl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,11 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class MainController {
 
+    private final RestControl restControl;
 
 
     @GetMapping(value = "/")
     private String mainPage(){
-        return "MainPage";
+        return "redirect:/api/items";
     }
 
     @GetMapping(value = "/forbidden")

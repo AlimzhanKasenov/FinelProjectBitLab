@@ -1,6 +1,7 @@
 package com.example.FinelProjectBitLab.config;
 
 import com.example.FinelProjectBitLab.services.UserServic;
+import com.example.FinelProjectBitLab.services.imp.ItemSevicImp;
 import com.example.FinelProjectBitLab.services.imp.UserSevicImp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -19,10 +20,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(proxyTargetClass = true, prePostEnabled = true,securedEnabled = true)
 public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 
-
     private final UserSevicImp userService;
 
-    @Override
+    @Bean
     protected void configure(HttpSecurity http)throws Exception{
         http.authorizeRequests().antMatchers("/css/**", "/js/**").permitAll();
         http.exceptionHandling().accessDeniedPage("/forbidden");
@@ -39,7 +39,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/"); //При выходе перекинет на строницу +
     }
 
-    @Override
+    @Bean
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userService);
     }
