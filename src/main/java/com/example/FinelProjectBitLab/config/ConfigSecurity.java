@@ -22,7 +22,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 
     private final UserSevicImp userService;
 
-    @Bean
+    @Override
     protected void configure(HttpSecurity http)throws Exception{
         http.authorizeRequests().antMatchers("/css/**", "/js/**").permitAll();
         http.exceptionHandling().accessDeniedPage("/forbidden");
@@ -39,7 +39,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/"); //При выходе перекинет на строницу +
     }
 
-    @Bean
+    @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userService);
     }
