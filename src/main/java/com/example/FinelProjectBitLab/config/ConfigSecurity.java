@@ -13,39 +13,49 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(proxyTargetClass = true, prePostEnabled = true, securedEnabled = true)
 @RequiredArgsConstructor
-@EnableGlobalMethodSecurity(proxyTargetClass = true, prePostEnabled = true,securedEnabled = true)
-public class ConfigSecurity extends WebSecurityConfigurerAdapter {
+public class ConfigSecurity{
 
-    private final UserSevicImp userService;
-
-    @Override
-    protected void configure(HttpSecurity http)throws Exception{
-        http.authorizeRequests().antMatchers("/css/**", "/js/**").permitAll();
-        http.exceptionHandling().accessDeniedPage("/forbidden");
-        http.formLogin()
-                .loginProcessingUrl("/auth") //Отправка запроса на авторизацию
-                .usernameParameter("email")
-                .usernameParameter("password")
-                .defaultSuccessUrl("/profileSuccess") //Если всё норм откроет страницу
-                .failureUrl("/loginPage?loginError") //При ошибке +
-                .loginPage("/loginPage").permitAll(); //Страница логина
-
-        http.logout()
-                .logoutUrl("/exit") //Запрос на выход
-                .logoutSuccessUrl("/"); //При выходе перекинет на строницу +
-    }
-
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userService);
+    @Bean
+    public UserSevicImp userSevic(){
+        return new UserSevicImp();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+
+        AuthenticationManagerBuilder authenticationManagerBuilder =
+                http.getSharedObject(AuthenticationManagerBuilder.class);
+
+        authenticationManagerBuilder.userDetailsService(userSevic()).passwordEncoder(passwordEncoder());
+
+        http.exceptionHandling().accessDeniedPage("/forbidden");
+        http.authorizeRequests().antMatchers("/css/**", "/js/**").permitAll();
+
+                http.formLogin()
+                .loginProcessingUrl("/auth") //Кудо отправляется запрос за место permitAll можно ограничить по провам
+                .defaultSuccessUrl("/profile") //Если всё норм то перекидывает на
+                .failureUrl("/signin?error") //Если ошибка то в строке напишет ошибку и вернётся обратно на строницу входа
+                .usernameParameter("user_email")
+                .usernameParameter("user_password")
+                .loginPage("/signin").permitAll(); //Строница входа
+
+        http.logout()
+                .logoutSuccessUrl("/MainPage") //При успешном выходе перекинет на страницу
+                .logoutUrl("/signout"); //Отправляет запрс на выход
+
+        http.csrf().disable();
+        return http.build();
+    }
+
 }

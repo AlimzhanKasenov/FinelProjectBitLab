@@ -11,7 +11,6 @@ public class MainController {
 
     private final RestControl restControl;
 
-
     @GetMapping(value = "/")
     private String mainPage(){
         return "redirect:/api/items";
