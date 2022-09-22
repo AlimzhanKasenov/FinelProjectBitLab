@@ -1,23 +1,29 @@
 CREATE TABLE t_users
 (
-    Id SERIAL PRIMARY KEY NOT NULL,
+    id SERIAL PRIMARY KEY NOT NULL,
     email TEXT,
     password TEXT,
-    fullName TEXT,
-    role INT DEFAULT 1
+    full_name TEXT
 );
 
 CREATE TABLE t_items
 (
-    Id SERIAL PRIMARY KEY NOT NULL,
-    nameItem TEXT,
+    id SERIAL PRIMARY KEY NOT NULL,
+    name_item TEXT,
     description TEXT,
     price INT DEFAULT 0,
-    picture VARCHAR
+    picture VARCHAR,
+    author_id INT
 );
 
 CREATE TABLE t_role
 (
-    Id SERIAL PRIMARY KEY NOT NULL,
+    id SERIAL PRIMARY KEY NOT NULL,
     role TEXT
+);
+
+CREATE TABLE t_users_roles
+(
+    user_id INT NOT NULL,
+    roles_id INT NOT NULL
 );

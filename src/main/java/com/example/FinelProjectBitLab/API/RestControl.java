@@ -2,7 +2,6 @@ package com.example.FinelProjectBitLab.API;
 
 import com.example.FinelProjectBitLab.model.Items;
 import com.example.FinelProjectBitLab.services.ItemService;
-import com.example.FinelProjectBitLab.services.UserServic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping(value = "/api")
 public class RestControl {
-    private final UserServic userServic;
     private final ItemService itemService;
 
     @GetMapping

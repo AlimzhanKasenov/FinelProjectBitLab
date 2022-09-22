@@ -1,1 +1,0 @@
-ALTER TABLE t_items ADD COLUMN author TEXT;

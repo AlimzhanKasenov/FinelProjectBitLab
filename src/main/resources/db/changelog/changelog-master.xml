@@ -23,14 +23,4 @@
                  splitStatements="true"
                  stripComments="true"/>
     </changeSet>
-
-    <changeSet author="Alimzhan" id="0.0.3_add_column_user">
-        <sqlFile dbms="postgresql"
-                 encoding="utf8"
-                 endDelimiter=";"
-                 path="changes/0.0.3_add_column_user.sql"
-                 relativeToChangelogFile="true"
-                 splitStatements="true"
-                 stripComments="true"/>
-    </changeSet>
 </databaseChangeLog>

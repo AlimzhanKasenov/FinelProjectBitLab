@@ -43,7 +43,7 @@ public class ConfigSecurity{
         http.authorizeRequests().antMatchers("/css/**", "/js/**").permitAll();
 
                 http.formLogin()
-                .loginProcessingUrl("/auth") //Кудо отправляется запрос за место permitAll можно ограничить по провам
+                .loginProcessingUrl("/auth") //Кудо отправляется запрос за место, permitAll можно ограничить по провам
                 .defaultSuccessUrl("/profile") //Если всё норм то перекидывает на
                 .failureUrl("/signin?error") //Если ошибка то в строке напишет ошибку и вернётся обратно на строницу входа
                 .usernameParameter("user_email")
