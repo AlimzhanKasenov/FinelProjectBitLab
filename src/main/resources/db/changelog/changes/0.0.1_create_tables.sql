@@ -1,4 +1,4 @@
-CREATE TABLE t_users
+CREATE TABLE IF NOT EXISTS t_users
 (
     id SERIAL PRIMARY KEY NOT NULL,
     email TEXT,
@@ -6,24 +6,29 @@ CREATE TABLE t_users
     full_name TEXT
 );
 
-CREATE TABLE t_items
+CREATE TABLE IF NOT EXISTS t_items
 (
     id SERIAL PRIMARY KEY NOT NULL,
     name_item TEXT,
     description TEXT,
     price INT DEFAULT 0,
     picture VARCHAR,
-    author_id INT
+    author INT NOT NULL,
+    constraint users_author_error
+    foreign key (author) references t_users(id)
 );
 
-CREATE TABLE t_role
+CREATE TABLE IF NOT EXISTS t_role
 (
     id SERIAL PRIMARY KEY NOT NULL,
     role TEXT
 );
 
-CREATE TABLE t_users_roles
-(
-    user_id INT NOT NULL,
-    roles_id INT NOT NULL
+CREATE TABLE IF NOT EXISTS t_users_roles(
+    user_id int not null,
+    roles_id int not null,
+    constraint users_roles_error_1
+    foreign key (user_id) references t_users(id),
+    constraint users_roles_error_2
+    foreign key (roles_id) references t_role(id)
 );

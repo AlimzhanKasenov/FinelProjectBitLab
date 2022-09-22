@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "t_items")
 @Getter
 @Setter
-public class Items {
+public class Items{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,5 +29,6 @@ public class Items {
     private String picture;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author")
     private User author;
 }
