@@ -15,7 +15,7 @@ INSERT INTO t_role(role)
 VALUES ('ROLE_USER'),
        ('ROLE_ADMIN');
 
-INSERT INTO t_users_roles(user_id, roles_id)
+INSERT INTO t_users_roles(user_id, role_id)
 VALUES (1, 2),
        (2, 1),
        (1, 1);
