@@ -1,6 +1,6 @@
 package com.example.FinelProjectBitLab.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.example.FinelProjectBitLab.DTO.UserDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,7 +29,7 @@ public class Items{
     @Column(name = "picture")
     private String picture;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "author")
     private User author;
 }
