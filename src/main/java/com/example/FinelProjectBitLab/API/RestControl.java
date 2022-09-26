@@ -2,8 +2,6 @@ package com.example.FinelProjectBitLab.API;
 
 import com.example.FinelProjectBitLab.DTO.ItemsDTO;
 import com.example.FinelProjectBitLab.mappers.ItemsMapper;
-import com.example.FinelProjectBitLab.mappers.RoleMapper;
-import com.example.FinelProjectBitLab.mappers.UserMapper;
 import com.example.FinelProjectBitLab.model.Items;
 import com.example.FinelProjectBitLab.services.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -19,17 +17,17 @@ import java.util.List;
 @RequestMapping(value = "/api")
 public class RestControl {
     private final ItemService itemService;
-    private final ItemsMapper itemsMapper;
+
 
     @GetMapping
     public ResponseEntity<List<ItemsDTO>> getAllItems(){
-        List<ItemsDTO> items = itemsMapper.itemListDTO(itemService.getAllItems());
+        List<ItemsDTO> items = itemService.getAllItems();
         return new ResponseEntity<> (items, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<ItemsDTO> getCourse(@PathVariable(name = "id") Long id) {
-        ItemsDTO item = itemsMapper.itemDTO(itemService.getItemById(id));
+        ItemsDTO item = itemService.getItemById(id);
         if (item != null) {
             return new ResponseEntity<>(item, HttpStatus.OK);
         } else {
@@ -43,7 +41,7 @@ public class RestControl {
     }
 
     @PutMapping(value = "/update")
-    public Items updateItem(@RequestBody Items item){
+    public ItemsDTO updateItem(@RequestBody Items item){
         return itemService.updateItem(item);
     }
 
