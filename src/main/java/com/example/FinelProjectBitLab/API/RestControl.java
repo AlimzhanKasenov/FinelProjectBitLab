@@ -28,8 +28,8 @@ public class RestControl {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Items> getCourse(@PathVariable(name = "id") Long id) {
-        Items item = itemService.getItemById(id);
+    public ResponseEntity<ItemsDTO> getCourse(@PathVariable(name = "id") Long id) {
+        ItemsDTO item = itemsMapper.itemDTO(itemService.getItemById(id));
         if (item != null) {
             return new ResponseEntity<>(item, HttpStatus.OK);
         } else {

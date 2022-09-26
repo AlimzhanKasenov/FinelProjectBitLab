@@ -1,7 +1,5 @@
 package com.example.FinelProjectBitLab.services.imp;
 
-import com.example.FinelProjectBitLab.DTO.ItemsDTO;
-import com.example.FinelProjectBitLab.mappers.ItemsMapper;
 import com.example.FinelProjectBitLab.model.Items;
 import com.example.FinelProjectBitLab.repository.ItemRepos;
 import com.example.FinelProjectBitLab.services.ItemService;

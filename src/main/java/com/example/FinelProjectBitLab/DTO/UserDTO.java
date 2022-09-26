@@ -12,5 +12,5 @@ public class UserDTO {
     private Long id;
     private String email;
     private String fullName;
-    private List<Role> role;
+    private List<RoleDTO> role;
 }
