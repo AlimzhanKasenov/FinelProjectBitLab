@@ -1,6 +1,5 @@
 package com.example.FinelProjectBitLab.model;
 
-import com.example.FinelProjectBitLab.DTO.UserDTO;
 import lombok.Getter;
 import lombok.Setter;
 

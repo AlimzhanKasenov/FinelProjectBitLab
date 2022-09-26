@@ -1,5 +1,6 @@
 package com.example.FinelProjectBitLab.services;
 
+import com.example.FinelProjectBitLab.DTO.ItemsDTO;
 import com.example.FinelProjectBitLab.model.Items;
 import com.example.FinelProjectBitLab.model.User;
 

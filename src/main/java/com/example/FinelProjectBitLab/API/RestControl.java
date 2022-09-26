@@ -1,5 +1,9 @@
 package com.example.FinelProjectBitLab.API;
 
+import com.example.FinelProjectBitLab.DTO.ItemsDTO;
+import com.example.FinelProjectBitLab.mappers.ItemsMapper;
+import com.example.FinelProjectBitLab.mappers.RoleMapper;
+import com.example.FinelProjectBitLab.mappers.UserMapper;
 import com.example.FinelProjectBitLab.model.Items;
 import com.example.FinelProjectBitLab.services.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -15,10 +19,11 @@ import java.util.List;
 @RequestMapping(value = "/api")
 public class RestControl {
     private final ItemService itemService;
+    private final ItemsMapper itemsMapper;
 
     @GetMapping
-    public ResponseEntity<List<Items>> getAllItems(){
-        List<Items> items = itemService.getAllItems();
+    public ResponseEntity<List<ItemsDTO>> getAllItems(){
+        List<ItemsDTO> items = itemsMapper.itemListDTO(itemService.getAllItems());
         return new ResponseEntity<> (items, HttpStatus.OK);
     }
 
