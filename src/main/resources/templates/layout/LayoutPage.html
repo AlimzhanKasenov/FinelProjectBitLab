@@ -18,17 +18,17 @@
             <a class="nav-link active" aria-current="page" th:href="${'/'}">Главная</a>
           </li>
           <li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_ADMIN')">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                aria-expanded="false">
               Панель администратора
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Добавить товар</a></li>
+              <li><a class="dropdown-item" th:href="${'/addPage'}">Добавить товар</a></li>
             </ul>
           </li>
         </ul>
         <form th:action="@{'/signin'}" class="d-flex" role="search">
-          <button class="btn btn-outline-success" type="submit">Войти</button>
+          <button class="btn btn-outline-success" type="submit" sec:authorize = "!isAuthenticated()">Войти</button>
         </form>
         <form th:action="@{'/signout'}" method="post" class="d-flex">
           <button sec:authorize="isAuthenticated()" aria-current="page">Выход</button>

@@ -12,4 +12,6 @@ public interface ItemService {
     ItemsDTO updateItem(Items items);
     void deletItem(Long id);
     ItemsDTO updateItemControl(Long id, String nameItem, String description, Long price);
+
+    ItemsDTO addItemControl(Long author_id, String nameItem, String description, Long price, String picture);
 }
