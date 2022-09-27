@@ -2,6 +2,7 @@ package com.example.FinelProjectBitLab.controller;
 
 import com.example.FinelProjectBitLab.services.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,12 +28,14 @@ public class MainController {
         return "DetailsItem";
     }
 
-    @GetMapping(value = "/editPage")
+
+    @PostMapping(value = "/editPage")
     private String editPage(@RequestParam(name = "id") Long id, Model model){
         model.addAttribute("editItem", itemService.getItemById(id));
         return "EditPage";
     }
 
+    // @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping(value = "/edit")
     private String editItem(@RequestParam(name = "id") Long id,
                             @RequestParam(name = "nameItem") String nameItem,
@@ -44,6 +47,7 @@ public class MainController {
         return "DetailsItem";
     }
 
+
     @PostMapping(value = "/delete")
     private String edit(@RequestParam(name = "id") Long id){
         itemService.deletItem(id);
@@ -53,5 +57,16 @@ public class MainController {
     @GetMapping(value = "/forbidden")
     private String forbiddenPage(){
         return "ForbiddenPage";
+    }
+
+    @GetMapping("/signin")
+    public String authorization(){
+        return "Authorization";
+    }
+
+    //@PreAuthorize("isAuthenticated()")
+    @GetMapping(value = "/mainPage")
+    private String mainPage(){
+        return "VhodPage";
     }
 }

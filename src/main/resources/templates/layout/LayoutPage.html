@@ -15,23 +15,23 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Главная</a>
+            <a class="nav-link active" aria-current="page" th:href="${'/'}">Главная</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_ADMIN')">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                aria-expanded="false">
-              Выпадающий список
+              Панель администратора
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Действие</a></li>
-              <li><a class="dropdown-item" href="#">Другое действие</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
+              <li><a class="dropdown-item" href="#">Добавить товар</a></li>
             </ul>
           </li>
         </ul>
-        <form class="d-flex" role="search">
+        <form th:action="@{'/signin'}" class="d-flex" role="search">
           <button class="btn btn-outline-success" type="submit">Войти</button>
+        </form>
+        <form th:action="@{'/signout'}" method="post" class="d-flex">
+          <button sec:authorize="isAuthenticated()" aria-current="page">Выход</button>
         </form>
       </div>
     </div>

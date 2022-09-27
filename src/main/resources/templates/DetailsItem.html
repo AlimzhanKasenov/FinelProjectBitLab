@@ -4,7 +4,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
   <link rel="stylesheet" type="text/css" th:href="@{'/css/bootstrap.css'}">
-<div layout:fragment="content">
+<div layout:fragment="content" class="mx-auto w-25">
   <div class="card" th:if="${item != null}">
 
     <div class="card-header">
@@ -18,7 +18,7 @@
         <p class="card-text" th:text="${item.description}"></p>
         <p class="fw-bold" th:text="${item.price}"></p>
         <p  th:text="${item.author.fullName}"></p>
-        <button type="submit" class="btn btn-primary">Редактировать</button>
+        <button type="submit" class="btn btn-primary" sec:authorize="hasAnyRole('ROLE_ADMIN')">Редактировать</button>
       </form>
     </div>
   </div>
