@@ -36,7 +36,7 @@ public class RestControl {
     }
 
     @PostMapping(value = "/addItem")
-    public Items addItem(@RequestBody Items item){
+    public ItemsDTO addItem(@RequestBody Items item){
         return itemService.addItem(item);
     }
 

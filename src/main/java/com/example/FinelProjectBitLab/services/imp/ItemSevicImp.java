@@ -28,8 +28,8 @@ public class ItemSevicImp implements ItemService {
         return itemsMapper.itemDTO(itemRepos.findById(id).orElseThrow());
     }
 
-    public Items addItem(Items item) {
-        return itemRepos.save(item);
+    public ItemsDTO addItem(Items item) {
+        return itemsMapper.itemDTO(itemRepos.save(item));
     }
 
     public ItemsDTO updateItem(Items item) {
